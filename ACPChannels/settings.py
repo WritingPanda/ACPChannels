@@ -20,6 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# I don't care if you see this. I am not using this app in production.
+# Wow, you're such a hacker for finding this. Good for you.
+# Major eye roll
 SECRET_KEY = 'n@uby)6zb+*4ww!@*%$wxohkh1w&&2x21yzjz62@1u^yag1q*b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -39,6 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
 ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'asgiref.inmemory.ChannelLayer',
+        'ROUTING': 'presentation.routing.channel_routing',
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
